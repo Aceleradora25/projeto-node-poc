@@ -1,17 +1,15 @@
-require("dotenv").config();
-const express = require("express");
-const app = express();
+const http = require('http');
 
-app.get("/", (req, res) => {
-  res.json({
-    hey: "guys",
-    welcome: "back",
-    to: "another",
-    video: ",",
-    please: "subscribe!",
-  });
-});
+const hostname = '127.0.0.1';
+const port = 3000;
 
-app.listen(process.env.PORT || 6969, () => {
-  console.log(`Server is running on port ${process.env.PORT || 6969}`);
-});
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello baby, deu bom! :D');
+})
+
+server.listen(port, hostname, () => {
+    console.log("Servidor rodando!")
+})
